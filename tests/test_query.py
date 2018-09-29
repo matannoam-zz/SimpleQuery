@@ -41,3 +41,10 @@ class QueryFilterTests(TestCase):
             Person(last_name='Fowler')]
         query = Query(people)
         self.assertEqual(query.filter('last_name', eq, 'Fowler'), people)
+
+    def test_with_only_one_matching_item(self):
+        people = [
+            Person(last_name='Hopper'), Person(last_name='Fowler'),
+            Person(last_name='Lovelace')]
+        query = Query(people)
+        self.assertEqual(query.filter('last_name', eq, 'Fowler'), [people[1]])
