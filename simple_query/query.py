@@ -1,7 +1,7 @@
 class Query:
 
     def __init__(self, data):
-        pass
+        self.data = data
 
     def all(self):
-        return []
+        return [item for item in self.data]

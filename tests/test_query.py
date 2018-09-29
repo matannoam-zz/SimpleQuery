@@ -9,3 +9,8 @@ class QueryAllTests(TestCase):
         items = []
         query = Query(items)
         self.assertEqual(query.all(), items)
+
+    def test_with_some_items(self):
+        items = ['One', 'Two', 'Three']
+        query = Query(items)
+        self.assertEqual(query.all(), items)
