@@ -9,4 +9,4 @@ class Query:
     def filter(self, field, operator, value):
         return [
             item for item in self.data
-            if getattr(item, field) == value]
+            if operator(getattr(item, field), value)]
