@@ -14,9 +14,32 @@ this repository to your machine.
 ```
 python3 -m venv .env
 ```
+
 For each terminal session going forward, work on the virtual
 environment and use its copy of python.
 ```
 source .env/bin/activate
 ```
 
+Upgrade pip
+```
+pip install -U pip
+```
+
+Install developer requirements for a nicer test runner (see Running Tests)
+```
+pip install -r requirements/dev.txt
+```
+
+## Running tests
+Tests are written in unittest syntax, so no additional package are needed
+to run them
+```
+python -m unittest discover
+```
+For a more informative output, as well as plugins for
+color and watch mode, use nose test runner. You can also use the test runner
+of your choice.
+```
+nosetests --rednose --with-watch
+```
