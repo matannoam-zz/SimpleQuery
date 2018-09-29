@@ -5,3 +5,6 @@ class Query:
 
     def all(self):
         return [item for item in self.data]
+
+    def filter(self, field, operator, value):
+        return []
