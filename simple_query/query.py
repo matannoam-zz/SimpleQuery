@@ -7,4 +7,6 @@ class Query:
         return [item for item in self.data]
 
     def filter(self, field, operator, value):
-        return []
+        return [
+            item for item in self.data
+            if getattr(item, field) == value]
