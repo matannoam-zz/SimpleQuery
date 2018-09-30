@@ -1,6 +1,5 @@
 from unittest import TestCase
 from operator import eq, gt
-from dataclasses import dataclass
 
 from simple_query.query import Query, Matcher, Field, Criteria
 
@@ -18,9 +17,9 @@ class QueryAllTests(TestCase):
         self.assertEqual(query.all(), items)
 
 
-@dataclass
 class Person:
-    last_name: str
+    def __init__(self, last_name):
+        self.last_name = last_name
 
 
 class QueryFilterTests(TestCase):
