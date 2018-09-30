@@ -61,3 +61,6 @@ class FilterMatchesValueTests(TestCase):
         filter_ = Filter('last_name', eq, 'Fowler')
         self.assertFalse(filter_.matches_value('Hopper'))
 
+    def test_does_match(self):
+        filter_ = Filter('last_name', eq, 'Fowler')
+        self.assertTrue(filter_.matches_value('Fowler'))

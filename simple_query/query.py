@@ -25,7 +25,7 @@ class Query:
 class Filter:
 
     def __init__(self, field, operator, value):
-        pass
+        self.value = value
 
     def matches_value(self, target_value):
-        return False
+        return target_value == self.value
