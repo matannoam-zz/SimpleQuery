@@ -2,7 +2,7 @@ from unittest import TestCase
 from operator import eq, gt
 from dataclasses import dataclass
 
-from simple_query.query import Query, Matcher
+from simple_query.query import Query, Matcher, Field
 
 
 class QueryAllTests(TestCase):
@@ -68,3 +68,10 @@ class MatcherTests(TestCase):
     def test_other_operator(self):
         matcher = Matcher(gt, 'Fowler')
         self.assertTrue(matcher.matches('Hopper'))
+
+
+class FieldTests(TestCase):
+
+    def test_get(self):
+        person = Person(last_name='Hopper')
+        self.assertEqual(person.last_name, Field('last_name').get_for(person))

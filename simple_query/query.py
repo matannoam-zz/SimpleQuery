@@ -27,3 +27,12 @@ class Matcher:
 
     def matches(self, target_value):
         return self.operator(target_value, self.value)
+
+
+class Field:
+
+    def __init__(self, field):
+        self.field = field
+
+    def get_for(self, item):
+        return getattr(item, self.field)
