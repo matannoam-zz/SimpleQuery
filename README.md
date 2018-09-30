@@ -17,9 +17,9 @@ pip install simple-query
 `all() ` returns the matching objects for a query, and `filter(*criteria)` returns a new, filtered query, where `criteria = field, operator, value`.
 
 For example:
-```
+```Python
 from simple_query.query import Query
-from operator import eq
+from operator import eq, gt, lt
 
 people = [
     Person('Ada Lovelace'),
@@ -27,10 +27,15 @@ people = [
     Person('Jean Bartik')]
 
 Query(people).all()
+# [Person('Ada Lovelace'), Person('Grace Hopper'), Person('Jean Bartik')]
+
 Query(people).filter('last_name', eq, 'Lovelace').all()
+# [Person('Ada Lovelace')]
+
 Query(people) \
-    .filter('first_name', eq, 'Grace') \
-    .filter('last_name', eq, 'Hopper').all()
+    .filter('first_name', gt, 'B') \
+    .filter('last_name', lt, 'C').all()
+# [Person('Jean Bartik')]
 ```
 
 ## Setting up development environment
