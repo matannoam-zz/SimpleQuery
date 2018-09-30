@@ -7,13 +7,13 @@ class Query:
         return self.data
 
     def filter(self, field, operator, value):
-        _filter = Filter(field, operator, value)
+        criteria = Criteria(field, operator, value)
         return Query(
             item for item in self.data
-            if _filter.includes(item))
+            if criteria.includes(item))
 
 
-class Filter:
+class Criteria:
 
     def __init__(self, field, operator, value):
         self.field = Field(field)
