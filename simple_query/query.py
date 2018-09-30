@@ -8,15 +8,23 @@ class Query:
 
     def filter(self, field, operator, value):
 
-        def get_field(item):
-            return getattr(item, field)
-
         def field_matches_value(item):
-            return Matcher(operator, value).matches(get_field(item))
+            return Matcher(operator, value).matches(
+                Field(field).get_for(item))
 
         return Query(
             item for item in self.data
             if field_matches_value(item))
+
+
+class Filter:
+
+    def __init__(self, field, operator, value):
+        self.field = Field(field)
+        self.matcher = Matcher(operator, value)
+
+    def includes(self, item):
+        return self.matcher.matches(self.field.get_for(item))
 
 
 class Matcher:
