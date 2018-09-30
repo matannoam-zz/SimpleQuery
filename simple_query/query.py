@@ -20,3 +20,12 @@ class Query:
         return Query(
             item for item in self.data
             if field_matches_value(item))
+
+
+class Filter:
+
+    def __init__(self, field, operator, value):
+        pass
+
+    def matches_value(self, target_value):
+        return False

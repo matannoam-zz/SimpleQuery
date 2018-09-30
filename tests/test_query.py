@@ -2,7 +2,7 @@ from unittest import TestCase
 from operator import eq, gt
 from dataclasses import dataclass
 
-from simple_query.query import Query
+from simple_query.query import Query, Filter
 
 
 class QueryAllTests(TestCase):
@@ -53,3 +53,11 @@ class QueryFilterTests(TestCase):
         people = [Person(last_name='Hopper')]
         filtered = Query(people).filter('last_name', gt, 'Fowler')
         self.assertEqual(filtered.all(), people)
+
+
+class FilterMatchesValueTests(TestCase):
+
+    def test_does_not_match(self):
+        filter_ = Filter('last_name', eq, 'Fowler')
+        self.assertFalse(filter_.matches_value('Hopper'))
+
