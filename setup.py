@@ -9,7 +9,7 @@ def long_description():
 
 setup(
     name="simple_query",
-    version="0.0.1",
+    version="0.0.2",
     author="Matan Noam Shavit",
     description="Query pattern of containers of objects",
     long_description=long_description(),
