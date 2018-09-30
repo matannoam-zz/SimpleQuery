@@ -28,28 +28,29 @@ class QueryFilterTests(TestCase):
     def test_with_no_items(self):
         people = []
         query = Query(people)
-        self.assertEqual(query.filter('last_name', eq, 'Fowler'), people)
+        self.assertEqual(query.filter('last_name', eq, 'Fowler').all(), people)
 
     def test_with_no_matching_items(self):
         people = [Person(last_name='Hopper')]
         query = Query(people)
-        self.assertEqual(query.filter('last_name', eq, 'Fowler'), [])
+        self.assertEqual(query.filter('last_name', eq, 'Fowler').all(), [])
 
     def test_with_only_matching_items(self):
         people = [
             Person(last_name='Fowler'), Person(last_name='Fowler'),
             Person(last_name='Fowler')]
         query = Query(people)
-        self.assertEqual(query.filter('last_name', eq, 'Fowler'), people)
+        self.assertEqual(query.filter('last_name', eq, 'Fowler').all(), people)
 
     def test_with_only_one_matching_item(self):
         people = [
             Person(last_name='Hopper'), Person(last_name='Fowler'),
             Person(last_name='Lovelace')]
         query = Query(people)
-        self.assertEqual(query.filter('last_name', eq, 'Fowler'), people[1:2])
+        self.assertEqual(
+            query.filter('last_name', eq, 'Fowler').all(), people[1:2])
 
     def test_with_different_operator(self):
         people = [Person(last_name='Hopper')]
         query = Query(people)
-        self.assertEqual(query.filter('last_name', gt, 'Fowler'), people)
+        self.assertEqual(query.filter('last_name', gt, 'Fowler').all(), people)

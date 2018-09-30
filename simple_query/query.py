@@ -1,10 +1,10 @@
 class Query:
 
     def __init__(self, data):
-        self.data = data
+        self.data = [item for item in data]
 
     def all(self):
-        return [item for item in self.data]
+        return self.data
 
     def filter(self, field, operator, value):
 
@@ -17,6 +17,6 @@ class Query:
         def field_matches_value(item):
             return matches_value(get_field(item))
 
-        return [
+        return Query(
             item for item in self.data
-            if field_matches_value(item)]
+            if field_matches_value(item))
