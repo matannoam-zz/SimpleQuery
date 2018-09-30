@@ -65,6 +65,10 @@ class CriteriaTests(TestCase):
         criteria = Criteria('last_name', eq, 'Fowler')
         self.assertFalse(criteria.includes(Person('Hopper')))
 
+    def test_other_operator(self):
+        criteria = Criteria('last_name', gt, 'Fowler')
+        self.assertTrue(criteria.includes(Person('Hopper')))
+
 
 class MatcherTests(TestCase):
 
