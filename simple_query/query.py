@@ -22,10 +22,11 @@ class Query:
             if field_matches_value(item))
 
 
-class Filter:
+class Matcher:
 
-    def __init__(self, field, operator, value):
+    def __init__(self, operator, value):
         self.value = value
+        self.operator = operator
 
-    def matches_value(self, target_value):
-        return target_value == self.value
+    def matches(self, target_value):
+        return self.operator(target_value, self.value)
