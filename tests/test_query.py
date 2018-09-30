@@ -56,6 +56,7 @@ class QueryFilterTests(TestCase):
 
 
 class FilterTests(TestCase):
+
     def test_matches(self):
         filter_ = Filter('last_name', eq, 'Fowler')
         self.assertTrue(filter_.includes(Person('Fowler')))

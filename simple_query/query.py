@@ -7,14 +7,10 @@ class Query:
         return self.data
 
     def filter(self, field, operator, value):
-
-        def field_matches_value(item):
-            return Matcher(operator, value).matches(
-                Field(field).get_for(item))
-
+        _filter = Filter(field, operator, value)
         return Query(
             item for item in self.data
-            if field_matches_value(item))
+            if _filter.includes(item))
 
 
 class Filter:
