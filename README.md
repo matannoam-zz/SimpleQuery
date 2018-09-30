@@ -26,7 +26,7 @@ Upgrade pip
 pip install -U pip
 ```
 
-Install developer requirements
+Install developer requirements for a nicer test runner (see Running Tests)
 ```
 pip install -r requirements/dev.txt
 ```
@@ -36,4 +36,11 @@ Tests are written in unittest syntax, so no additional package are needed
 to run them
 ```
 python -m unittest discover
+```
+
+For a more informative output, as well as plugins for
+color and watch mode, use nose test runner. You can also use the test runner
+of your choice.
+```
+nosetests --rednose --with-watch
 ```
