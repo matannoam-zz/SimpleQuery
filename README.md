@@ -7,6 +7,32 @@ The Query pattern uses criteria on classes and fields to retrieve
 value objects from a dataset. Those criteria are a field, an operator,
 and a value. For example, ('last_name', =, 'Fowler') or ('price', <, 100.00).
 
+## Installation
+
+```
+pip install simple-query
+```
+
+## Usage
+`all() ` returns the matching objects for a query, and `filter(*criteria)` returns a new, filtered query, where `criteria = field, operator, value`.
+
+For example:
+```
+from simple_query.query import Query
+from operator import eq
+
+people = [
+    Person('Ada Lovelace'),
+    Person('Grace Hopper'),
+    Person('Jean Bartik')]
+
+Query(people).all()
+Query(people).filter('last_name', eq, 'Lovelace').all()
+Query(people) \
+    .filter('first_name', eq, 'Grace') \
+    .filter('last_name', eq, 'Hopper').all()
+```
+
 ## Setting up development environment
 It is always recommended to use a virtual environment for each
 Python appplication. Create the environment once, after cloning
