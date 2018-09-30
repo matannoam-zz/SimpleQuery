@@ -14,11 +14,11 @@ class Query:
 class Criteria:
 
     def __init__(self, field, operator, value):
-        self.field = Field(field)
-        self.matcher = Matcher(operator, value)
+        self.field_for = Field(field).get_for
+        self.matches = Matcher(operator, value).matches
 
     def includes(self, item):
-        return self.matcher.matches(self.field.get_for(item))
+        return self.matches(self.field_for(item))
 
 
 class Matcher:
