@@ -8,9 +8,7 @@ class Query:
 
     def filter(self, field, operator, value):
         criteria = Criteria(field, operator, value)
-        return Query(
-            item for item in self.data
-            if criteria.includes(item))
+        return Query(filter(criteria.includes, self.data))
 
 
 class Criteria:
