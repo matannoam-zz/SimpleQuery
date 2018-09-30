@@ -14,9 +14,16 @@ this repository to your machine.
 ```
 python3 -m venv .env
 ```
+
 For each terminal session going forward, work on the virtual
 environment and use its copy of python.
 ```
 source .env/bin/activate
 ```
 
+## Running tests
+Tests are written in unittest syntax, so no additional package are needed
+to run them
+```
+python -m unittest discover
+```
